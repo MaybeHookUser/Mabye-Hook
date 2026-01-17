@@ -1,1 +1,1 @@
-print("Mobile")
+warn("Loading mobile..")
