@@ -1,7 +1,7 @@
 local UserInputService = game:GetService("UserInputService")
 
 if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled then
-    loadstring(game:HttpGet("YOUR_MOBILE_LOADSTRING_URL_HERE"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MaybeHookUser/Mabye-Hook/refs/heads/main/Mobile"))()
 else
     loadstring(game:HttpGet(""))()
 end
