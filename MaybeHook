@@ -1,1 +1,7 @@
+local UserInputService = game:GetService("UserInputService")
 
+if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled then
+    loadstring(game:HttpGet("YOUR_MOBILE_LOADSTRING_URL_HERE"))()
+else
+    loadstring(game:HttpGet(""))()
+end
